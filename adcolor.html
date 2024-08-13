@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body{
+            color: white;
+            height: 200px;
+            background-color: red;
+            background-image: linear-gradient(to right, #ff0000 , #ffff00);
+        }
+        .button{
+            border-radius: 5px;
+        }
+        #btn1{
+            background-color:rgb(121, 78, 78) ;
+            color: white;
+        }
+        #btn2{
+            background-color: rgb(41, 41, 73);
+            color: white;
+        }
+
+
+        
+    </style>
+  </head>
+
+  <body>
+    <center>
+
+    <section>
+      <div>
+        <button id="btn1" class="button">#ff0000</button>
+        <button id="btn2" class="button">#ffff00</button>
+      </div>
+      <h2>Copy your code here</h2>
+      <div class="code">
+        background-color:linear-gradient(to
+        right ,#ff0000 , #ffff00)
+      </div>
+    </section>
+    <script>
+      let btn11 = document.getElementById("btn1");
+      let btn22 = document.getElementById("btn2");
+      let codeColor=document.querySelector(".code")
+      let rgb1="#ff0000"
+      let rgb2="#ffff00"
+      const hexaFun = () => {
+        let hexValue = "0123456789abcdef";
+        let colors = "#";
+        for (let i = 0; i < 6; i++) {
+          colors = colors + hexValue[Math.floor(Math.random() * 16)];
+        }
+        return colors;
+      };
+
+      const handleBtn1 = () => {
+         rgb1 = hexaFun();
+        document.body.style.backgroundImage=`linear-gradient(to
+        right,${rgb1},${rgb2})`
+        codeColor.innerHTML=`background-color:linear-gradient(to
+        right,${rgb1},${rgb2})`
+        btn11.innerHTML=`${rgb1}`
+
+      };
+      const handleBtn2 = () => {
+        rgb2 = hexaFun();
+        document.body.style.backgroundImage=`linear-gradient(to
+        right,${rgb1},${rgb2})`
+        codeColor.innerHTML=`background-color:linear-gradient(to
+        right,${rgb1},${rgb2})`
+        btn22.innerHTML=`${rgb2}`
+
+
+      };
+
+      btn11.addEventListener("click", handleBtn1);
+      btn22.addEventListener("click", handleBtn2);
+
+      codeColor.addEventListener('click',()=>{
+        navigator.clipboard.writeText(codeColor.innerText)
+        alert("your code has been copied")
+        
+      })
+    </script>
+    </center>
+  </body>
+</html>
